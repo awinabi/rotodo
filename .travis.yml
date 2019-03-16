@@ -1,0 +1,18 @@
+sudo: false
+language: ruby
+cache:
+  bundler: true
+addons:
+  postgresql: '9.4'
+  # chrome: stable
+rvm:
+- 2.5.3
+env:
+  global:
+  - SECRET_TOKEN=ebf574851882756b85824f66f5383b4cb4c61e211f017316a8e5
+  - RACK_ENV=text
+
+before_script:
+- bundle exec rake db:create db:migrate RACK_ENV=test
+script:
+- xvfb-run bundle exec rspec --format progress

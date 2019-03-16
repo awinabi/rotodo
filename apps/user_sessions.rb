@@ -16,6 +16,6 @@ RodaApp.route('user_sessions') do |r|
   r.post 'logout' do
     env['warden'].logout
 
-    view('/user_sessions/new')
+    r.redirect('/user_sessions/new')
   end
 end

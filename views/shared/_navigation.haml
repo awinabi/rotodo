@@ -1,4 +1,14 @@
-- if current_user
-  %form.inline{ action: '/user_sessions/logout', method: 'POST' }
-    = Rack::Csrf.tag(env)
-    %button.btn.btn-warning{ type: 'submit' } Logout
+.d-flex.flex-column.flex-md-row.align-items-center.p-2.px-md-4.mb-3.bg-white.border-bottom
+  %h5.my-0.mr-md-auto.font-weight-normal RoToDo
+  %nav.my-2.my-md-0.mr-md-3
+  - if current_user
+    %div.navbar-text.mr-2 Logged in as #{current_user.email}
+    %form.inline{ action: '/user_sessions/logout', method: 'POST' }
+      = Rack::Csrf.tag(env)
+      %button.btn.btn-warning{ type: 'submit' } Logout
+  - else
+    %a.px-2.text-dark{:href => "#"} Features
+    %a.px-2.text-dark{:href => "#"} Pricing
+
+    %a.p-2{:href => "/user_sessions/new"} Login
+    %a.btn.btn-primary{:href => "/user_registrations/new"} Register

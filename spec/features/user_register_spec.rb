@@ -1,9 +1,7 @@
 require 'spec_helper'
 
 describe "the signup process", :type => :feature, :js => true do
-
   context 'with proper params' do
-
     it "signs me up" do
       visit '/user_registrations/new'
       fill_in 'email', with: 'user@example.com'
@@ -17,7 +15,6 @@ describe "the signup process", :type => :feature, :js => true do
   end
 
   context 'with invalid params' do
-
     it 'raises errors when passwords not match' do
       visit '/user_registrations/new'
       fill_in 'email', with: 'user@example.com'

@@ -4,15 +4,16 @@ class DateAlreadyReserved < StandardError; end
 class CreateTodo
   attr_writer :task
 
-  def initialize(params)
+  def initialize(params, user)
     @params = params['task']
+    @user = user
   end
 
   def create
     raise EmptyParams if empty_params?
     filter_params
 
-    @todo = Todo.create(created_at: Date.today, task: @task)
+    @todo = Todo.create(created_at: Date.today, task: @task, user_id: @user.id, assigned_user_id: @user.id)
   end
 
   def success_message
@@ -27,7 +28,6 @@ class CreateTodo
 
   def filter_params
     @task = @params
-    puts '~~~~>> PARAMS', @params
   end
 
   def empty_params?

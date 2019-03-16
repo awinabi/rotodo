@@ -41,17 +41,15 @@ class RodaApp < Roda
     require_relative 'apps/user_sessions'
     require_relative 'apps/user_registrations'
     require_relative 'apps/todo'
+    require_relative 'apps/root'
 
     r.assets
 
     # /
     r.root do
-      env['warden'].authenticate!
-      response['Content-Type'] = 'text/html'
-      r.params['day'] ? @day = ( Date.parse r.params['day'] ) : @day = Date.today
-      @todos = Todo.by_day(@day)
-      view('todos/index')
+      r.route 'home'
     end
+
 
     # /user_sessions
     r.on 'user_sessions' do

@@ -10,6 +10,7 @@ gem 'sequel_secure_password', '~> 0.2.15'
 gem 'warden', '~> 1.2.8'
 gem 'rack_csrf', '~> 2.6.0'
 gem 'rake', '~> 12.3.2'
+gem 'puma'
 
 group :test do
   gem 'database_cleaner', '~> 1.7.0'
@@ -19,5 +20,6 @@ group :test do
   gem 'capybara', '~> 3.14.0'
   gem 'selenium-webdriver', '~> 3.141.0'
   gem 'capybara-webkit', '~> 1.15.1'
+  gem 'poltergeist', '~> 1.18.1'
   gem 'faker', '~> 1.9.3'
 end

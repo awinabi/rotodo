@@ -14,10 +14,7 @@ Referenced from [this app](https://github.com/binarapps/slack-integrator), and [
 
 ## TODOS
 
-- Upgrade gems
 - Integrate CI - travis
-- Fix specs
-- Get rid of Activesupport (factorygirl)
 
 ## Setup
 
@@ -48,10 +45,25 @@ rackup
 ```
 
 ## Tests
+Prepare the database with the following:
+
 
 ```
 be rake db:create RACK_ENV=test
 be rake db:migrate RACK_ENV=test
+```
+
+Install chromedriver to run headless chrome.
+
+```
+brew cask install chromedriver
+```
+
+*For some reason* rbenv has the chromedriver binary from a gem; so uninstall it using `gem uninstall chromedriver-helper`.
+
+Run chromedriver in the background- `chromedriver --silent &`, then run the specs.
+
+```
 be rspec spec
 ```
 

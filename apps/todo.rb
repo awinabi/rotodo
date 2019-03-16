@@ -1,9 +1,9 @@
 RodaApp.route('todo') do |r|
+
   # POST /api/todos
   r.post do
     begin
-      # byebug
-      @todo = CreateTodo.new(r.params)
+      @todo = CreateTodo.new(r.params, current_user)
       created_todo = @todo.create
 
       status(200)
@@ -19,5 +19,4 @@ RodaApp.route('todo') do |r|
   r.get do
     Todo.all
   end
-
 end

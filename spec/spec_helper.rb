@@ -1,12 +1,16 @@
 require 'rack/test'
-require_relative '../roda-app'
-require 'database_cleaner'
-require 'factory_girl'
+require 'warden'
 require 'dotenv'
+require 'database_cleaner'
 require 'capybara/rspec'
-require 'capybara-webkit'
-require_relative '../spec/support/session_helper'
+# require 'capybara-webkit'
+# require 'selenium-webdriver'
+require 'capybara/poltergeist'
+require 'fabrication'
 require 'faker'
+
+require_relative '../roda-app'
+require_relative '../spec/support/session_helper'
 
 ENV['RACK_ENV'] = 'test'
 
@@ -33,20 +37,25 @@ def app
 end
 
 Capybara.app = RodaApp
-Capybara.current_driver = :webkit
+Capybara.javascript_driver = :poltergeist
 
-Capybara::Webkit.configure do |config|
-  config.block_unknown_urls
-  config.debug = true
-end
+# For use with chromedriver
+# Capybara.register_driver(:headless_chrome) do |app|
+#   capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
+#     chromeOptions: { args: %w[headless disable-gpu] }
+#   )
 
-FactoryGirl.definition_file_paths = %w{./factories ./spec/factories}
-FactoryGirl.find_definitions
+#   Capybara::Selenium::Driver.new(
+#     app,
+#     browser: :chrome,
+#     desired_capabilities: capabilities
+#   )
+# end
 
 RSpec.configure do |config|
   config.include Capybara::DSL
-
   config.include Rack::Test::Methods
+  config.include Warden::Test::Helpers
 
   # Cleanup the DB in between test runs
   config.before(:suite) do

@@ -1,5 +1,5 @@
 require 'yaml'
-require './models.rb'
+require_relative '../models/todo'
 
 namespace :todo do
   task :create do

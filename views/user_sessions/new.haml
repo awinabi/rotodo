@@ -1,7 +1,7 @@
 .login-form
   %form.form-signin{ action: '/user_sessions/create', method: 'POST' }
     = Rack::Csrf.tag(env)
-    %h2.form-signin-heading Please sign in
+    %h2.form-signin-heading Please Login
     %label.sr-only{ :for => "email" } Email address
     %input.form-control{ :autofocus => "", :name => "email", :placeholder => "Email address", :required => "", :type => "email" }/
     %label.sr-only{ :for => "password" } Password

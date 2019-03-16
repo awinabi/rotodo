@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'Index todos' do
-  let!(:todo) { FactoryGirl.create(:todo) }
+  let!(:todo) { Fabricate(:todo) }
 
   it 'should return todos list' do
     get 'api/todos', { }

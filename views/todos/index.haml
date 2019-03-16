@@ -1,24 +1,33 @@
-%div
-  %button.btn.btn-lng.btn-primary.reserve Create new Todo
+.row.row-eq-height
+  .col-lg-4.border-right-block
+    .actions-block.border-warning
+      %form.form-inline.todo-form{ action: '/api/todos', method: 'POST' }
+        = Rack::Csrf.tag(env)
 
-  %form.todo-form{ action: '/api/todos', method: 'POST' }
-    = Rack::Csrf.tag(env)
-    %input.form-control.task{ :autofocus => "true", :name => "task", :placeholder => "Task to do", :required => "", :type => "text" }/
-    %button.btn.btn-lng.btn-primary.btn-block.submit-todo{ type: "Submit" } Save
-.errors{ style: 'color: red;' }
-.success{ style: 'color: green;' }
-= "Number of todos at #{@day}: #{@todos.count}"
+        %input.form-control.m-1.task{ :autofocus => "true", :name => "task", :placeholder => "Task to do", :required => "", :type => "text" }/
+        %button.btn.btn-lng.btn-warning.m-1.submit-todo{ type: "Submit" } Save
 
-%table.table.table-striped
-  %tr
-    %th.span1 Tasks
-  -@todos.each do |todo|
-    %tr
-      %td= todo.task
+  .col-lg-8.px-4
+    .my-4
+      %h4 Good Day, #{current_user.name}
 
-.todo-paginate
-  %a{ href: "#{request.base_url}?day=#{@day - 1}" }
-    <- Previous
+    .my-4
+      .task-group-title.mb-2
+        %b Assigned To You
+        %span.header-badge.badge.badge-primary #{@assigned_todos.count}
 
-  %a{ href: "#{request.base_url}?day=#{@day + 1}" }
-    Next ->
+      %table.table.table-bordered.rounded
+        -@assigned_todos.each do |todo|
+          %tr
+            %td= todo.task
+
+
+    .my-4
+      .task-group-title.mb-2
+        %b Created By You
+        %span.header-badge.badge.badge-primary #{@todos.count}
+
+      %table.table.table-bordered.rounded
+        -@todos.each do |todo|
+          %tr
+            %td= todo.task
