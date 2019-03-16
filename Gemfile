@@ -18,8 +18,6 @@ group :test do
   gem 'rspec', '~> 3.8.0'
   gem 'rack-test', '~> 1.1.0'
   gem 'capybara', '~> 3.14.0'
-  gem 'selenium-webdriver', '~> 3.141.0'
-  gem 'capybara-webkit', '~> 1.15.1'
   gem 'poltergeist', '~> 1.18.1'
   gem 'faker', '~> 1.9.3'
 end
