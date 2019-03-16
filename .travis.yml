@@ -10,7 +10,7 @@ rvm:
 env:
   global:
   - SECRET_TOKEN=ebf574851882756b85824f66f5383b4cb4c61e211f017316a8e5
-  - RACK_ENV=text
+  - RACK_ENV=test
 
 before_script:
 - bundle exec rake db:create db:migrate RACK_ENV=test
