@@ -17,6 +17,7 @@ Referenced from [this app](https://github.com/binarapps/slack-integrator), and [
 - Upgrade gems
 - Integrate CI - travis
 - Fix specs
+- Get rid of Activesupport (factorygirl)
 
 ## Setup
 
