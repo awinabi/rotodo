@@ -1,12 +1,13 @@
 require 'sequel'
 
 class Todo < Sequel::Model
+  plugin :validation_helpers
+  plugin :json_serializer
+  plugin :def_dataset_method
 
   subset(:today, :completed_at => Date.today)
 
   alias_method :save!, :save
-  plugin :validation_helpers
-  plugin :json_serializer
 
   def self.by_day(day)
     Todo.where(created_at: day)
