@@ -1,3 +1,4 @@
+![travis build](https://api.travis-ci.com/awinabi/rotodo.svg?branch=master)
 ## Introduction
 
 Sample Roda Application for listing todos
@@ -11,10 +12,6 @@ Referenced from [this app](https://github.com/binarapps/slack-integrator), and [
 - Roda - http://roda.jeremyevans.net
 - Sequel - http://sequel.jeremyevans.net
 - Postgres
-
-## TODOS
-
-- Integrate CI - travis
 
 ## Setup
 
