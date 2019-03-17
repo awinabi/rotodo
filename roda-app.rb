@@ -38,10 +38,10 @@ class RodaApp < Roda
   end
 
   route do |r|
-    require_relative 'apps/user_sessions'
-    require_relative 'apps/user_registrations'
-    require_relative 'apps/todo'
-    require_relative 'apps/root'
+    require_relative 'routes/user_sessions'
+    require_relative 'routes/user_registrations'
+    require_relative 'routes/todo'
+    require_relative 'routes/root'
 
     r.assets
 
