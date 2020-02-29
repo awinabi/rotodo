@@ -9,7 +9,7 @@ gem 'byebug', '~> 11.0.0'
 gem 'sequel_secure_password', '~> 0.2.15'
 gem 'warden', '~> 1.2.8'
 gem 'rack_csrf', '~> 2.6.0'
-gem 'rake', '~> 12.3.2'
+gem 'rake', '~> 12.3.3'
 gem 'puma'
 
 group :test do
